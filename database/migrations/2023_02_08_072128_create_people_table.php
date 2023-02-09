@@ -18,6 +18,7 @@ class CreatePeopleTable extends Migration
             $table->string('name');
             $table->string('username');
             $table->bigInteger('nik')->unique();
+            $table->bigInteger('telp')->unique();
             $table->string('email')->unique();
             $table->string('password');
             $table->timestamps();

@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\People;
-use App\Http\Requests\StorePeopleRequest;
-use App\Http\Requests\UpdatePeopleRequest;
+use Illuminate\Http\Request;
 
 class PeopleController extends Controller
 {
@@ -15,72 +14,26 @@ class PeopleController extends Controller
      */
     public function index()
     {
-        //
+        $data = People::all();
+        return view('dashboard.masyarakat', [
+            'title' => 'SIADU &mdash; Masyarakat',
+            'data' => $data
+        ]);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function buatAkun()
     {
-        //
+        return view('dashboard.addMasyarakat', [
+            'title' => 'SIADU &mdash; Buat Akun'
+        ]);
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StorePeopleRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StorePeopleRequest $request)
+    public function insertMasyarakat(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\People  $people
-     * @return \Illuminate\Http\Response
-     */
-    public function show(People $people)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\People  $people
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(People $people)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdatePeopleRequest  $request
-     * @param  \App\Models\People  $people
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdatePeopleRequest $request, People $people)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\People  $people
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(People $people)
-    {
-        //
+        if ($data = People::create()) {
+            return
+                redirect('/dashboard/masyarakat')->with('sukses', 'Berhasil Membuat Akun!');
+        } else {
+            return
+                redirect('/dashboard/masyarakat')->with('gagal', 'Gagal Membuat Akun!');
+        }
     }
 }

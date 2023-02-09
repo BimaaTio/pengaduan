@@ -1,10 +1,13 @@
 <?php
 
+use App\Models\User;
+use App\Models\People;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PeopleController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +32,7 @@ Route::get('/login', [LoginController::class, 'index'])->middleware('guest')->na
 Route::post('/login', [LoginController::class, 'prosesLogin'])->name('prosesLogin');
 
 // Route Logout
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
 
 // Route Register
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest')->name('register');
@@ -37,6 +40,7 @@ Route::post('/register', [RegisterController::class, 'prosesRegister'])->name('p
 
 // Route Dashboard
 Route::get('/dashboard', function () {
+    $dataUser  = User::all();
     return view('dashboard.index', [
         'title' => 'SIADU &mdash; Dashboard'
     ]);
@@ -46,3 +50,11 @@ Route::get('/dashboard', function () {
 Route::get('/dashboard/report', [ReportController::class, 'index'])->name('reports');
 Route::get('/dashboard/buat-laporan', [ReportController::class, 'tambahLaporan'])->name('tambahLaporan');
 Route::post('/insertReport', [ReportController::class, 'insertReport'])->name('insertReport');
+Route::get('/dashboard/report/hapus/{id:id}', [ReportController::class, 'hapusLaporan'])->name('hapusLaporan');
+
+
+// Route kelola masyarakat
+Route::get('/dashboard/masyarakat', [PeopleController::class, 'index'])->name('masyrakat');
+// Register Masyarakat
+Route::get('/dashboard/buat-akun-masyarakat', [PeopleController::class, 'buatAkun'])->name('buatAkun');
+Route::post('/insertMasyarakat', [RegisterController::class, 'masyarakat'])->name('akunMasyarakat');

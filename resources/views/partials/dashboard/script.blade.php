@@ -57,6 +57,12 @@
              "autoWidth": false,
              "buttons": ["excel", "pdf", "print", "colvis"]
          }).buttons().container().appendTo('#example2_wrapper .col-md-6:eq(0)');
+         $("#example3").DataTable({
+             "responsive": true,
+             "lengthChange": false,
+             "autoWidth": false,
+             "buttons": ["excel", "pdf", "print", "colvis"]
+         }).buttons().container().appendTo('#example3_wrapper .col-md-6:eq(0)');
          $('#summernote').summernote()
      });
  </script>

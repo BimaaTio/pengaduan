@@ -30,7 +30,24 @@ class ReportController extends Controller
 
     public function insertReport(Request $request)
     {
-        dd($request);
-        Report::create($request->all());
+        if ($data = Report::create($request->all())) {
+            if ($request->hasFile('foto')) {
+                $request->file('foto')->move('img/laporan', $request->file('foto')->getClientOriginalName());
+                $data->foto = $request->file('foto')->getClientOriginalName();
+                $data->save();
+            }
+            return redirect('/dashboard/report')->with('sukses', 'Berhasil Membuat Laporan!');
+        } else {
+            return redirect('/dashboard/report')->with('gagal', 'Gagal Membuat Laporan!');
+        }
+    }
+    public function hapusLaporan(Report $id)
+    {
+        $data = $id;
+        if ($data->delete()) {
+            return redirect('/dashboard/report')->with('sukses', 'Berhasil Menghapus Laporan!');
+        } else {
+            return redirect('/dashboard/report')->with('gagal', 'Berhasil Menghapus Laporan!');
+        }
     }
 }
