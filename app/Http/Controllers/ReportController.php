@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Report;
-use App\Http\Requests\StoreReportRequest;
-use App\Http\Requests\UpdateReportRequest;
+use Illuminate\Http\Request;
 
 class ReportController extends Controller
 {
@@ -15,74 +14,23 @@ class ReportController extends Controller
      */
     public function index()
     {
-        return view('dashboard.reports',[
-            'title' => 'Laporan &mdash; SIADU'
+        $data = Report::all();
+        return view('dashboard.reports', [
+            'title' => 'SIADU &mdash; Laporan',
+            'data' => $data
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function tambahLaporan()
     {
-        //
+        return view('dashboard.addReport', [
+            'title' => 'SIADU &mdash; Buat Laporan'
+        ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreReportRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreReportRequest $request)
+    public function insertReport(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Report  $report
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Report $report)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Report  $report
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Report $report)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateReportRequest  $request
-     * @param  \App\Models\Report  $report
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateReportRequest $request, Report $report)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Report  $report
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Report $report)
-    {
-        //
+        dd($request);
+        Report::create($request->all());
     }
 }
