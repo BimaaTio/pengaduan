@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Models\User;
 use App\Models\People;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PeopleController;
 use App\Http\Controllers\ReportController;
@@ -52,9 +54,12 @@ Route::get('/dashboard/buat-laporan', [ReportController::class, 'tambahLaporan']
 Route::post('/insertReport', [ReportController::class, 'insertReport'])->name('insertReport');
 Route::get('/dashboard/report/hapus/{id:id}', [ReportController::class, 'hapusLaporan'])->name('hapusLaporan');
 
+// Route tanggapi laporan
+Route::get('/dashboard/report/tanggapi/{id:id}', [CommentController::class, 'index'])->name('tanggapan');
+Route::post('/insertTanggapan', [CommentController::class, 'tanggapi'])->name('tanggapi');
+
 
 // Route kelola masyarakat
-Route::get('/dashboard/masyarakat', [PeopleController::class, 'index'])->name('masyrakat');
+Route::get('/dashboard/masyarakat', [UserController::class, 'masyarakat'])->name('masyrakat');
 // Register Masyarakat
-Route::get('/dashboard/buat-akun-masyarakat', [PeopleController::class, 'buatAkun'])->name('buatAkun');
-Route::post('/insertMasyarakat', [RegisterController::class, 'masyarakat'])->name('akunMasyarakat');
+Route::get('/dashboard/buat-akun-masyarakat', [UserController::class, 'buatAkunMasyarakat'])->name('buatAkunMasyarakat');

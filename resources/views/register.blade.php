@@ -41,6 +41,19 @@
             @enderror
           </div>
           <div class="input-group mb-3">
+            <input type="text" class="form-control @error('nik') is-invalid @enderror" name="nik" required value="{{ old('nik') }}" placeholder="NIK">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-id-card"></span>
+              </div>
+            </div>
+            @error('name')
+            <div class="invalid-feedback">
+              {{ $message }}
+            </div>
+            @enderror
+          </div>
+          <div class="input-group mb-3">
             <input type="text" class="form-control @error('username') is-invalid @enderror" name="username" required value="{{ old('username') }}" placeholder="Username">
             <div class="input-group-append">
               <div class="input-group-text">
@@ -61,6 +74,19 @@
               </div>
             </div>
             @error('email')
+            <div class="invalid-feedback">
+              {{ $message }}
+            </div>
+            @enderror
+          </div>
+          <div class="input-group mb-3">
+            <input type="tel" class="form-control @error('telp') is-invalid @enderror" name="telp" required value="{{ old('telp') }}" placeholder="Telphone">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-phone"></span>
+              </div>
+            </div>
+            @error('telp')
             <div class="invalid-feedback">
               {{ $message }}
             </div>

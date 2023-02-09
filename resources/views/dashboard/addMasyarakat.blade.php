@@ -24,7 +24,7 @@
         <div class="card">
           <div class="card-header">Buat Akun</div>
           <div class="card-body">
-            <form action="/insertMasyarakat" method="POST">
+            <form action="/register" method="POST">
               @csrf
               <div class="form-group">
                 <label for="nama">NIK</label>
@@ -58,8 +58,7 @@
               </div>
               <div class="form-group">
                 <label for="password" class="d-block">Password</label>
-                <input id="password" type="password" class="form-control pwstrength" data-indicator="pwindicator"
-                  name="password" maxlength="16">
+                <input id="password" type="password" class="form-control pwstrength" data-indicator="pwindicator" name="password" maxlength="16">
                 <div id="pwindicator" class="pwindicator">
                   <div class="bar"></div>
                   <div class="label"></div>

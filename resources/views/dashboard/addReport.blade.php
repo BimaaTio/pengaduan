@@ -28,7 +28,7 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="inputName">Nama Pelapor</label>
-                                <input type="tel" name="people_id" id="inputName" class="form-control">
+                                <input type="tel" name="users_id" id="inputName" value="" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="inputName">Judul Laporan</label>
@@ -39,14 +39,14 @@
                                 <textarea id="summernote" name="body" class="form-control" rows="4"></textarea>
                             </div>
                             <div class="form-group">
-                                    <label for="exampleInputFile">Pilih Foto</label>
-                                    <div class="input-group">
-                                        <div class="custom-file">
-                                            <input name="foto" type="file" class="custom-file-input" id="exampleInputFile">
-                                            <label class="custom-file-label" for="exampleInputFile">Pilih Foto</label>
-                                        </div>
+                                <label for="exampleInputFile">Pilih Foto</label>
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input name="foto" type="file" class="custom-file-input" id="exampleInputFile">
+                                        <label class="custom-file-label" for="exampleInputFile">Pilih Foto</label>
                                     </div>
                                 </div>
+                            </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>

@@ -33,7 +33,8 @@
                             <thead>
                                 <tr>
                                     <th width="1%">No</th>
-                                    <th width="10%">Nama Pengadu</th>
+                                    <th>NIK Pengadu</th>
+                                    <th>Nama Pengadu</th>
                                     <th width="20%">Judul Laporan</th>
                                     <th>Laporan</th>
                                     <th>Tgl</th>
@@ -49,13 +50,13 @@
                                 @forelse ($data as $d)
                                 <tr>
                                     <td>{{ $no++ }}</td>
-                                    <td>Bima</td>
+                                    <td>{{ ucwords($d->users->nik) }}</td>
+                                    <td>{{ ucwords($d->users->username) }}</td>
                                     <td>{{ $d->title }}</td>
                                     <td>{!! $d->body !!}</td>
                                     <td>{{ $d->created_at->format('d M Y') }}</td>
                                     <td>
-                                        <img width="150" src="{{ asset('img/laporan/'.$d->foto) }}" alt=""
-                                            class="img-fluid img-thumbnail">
+                                        <img width="150" src="{{ asset('img/laporan/'.$d->foto) }}" alt="" class="img-fluid img-thumbnail">
                                     </td>
                                     <td>
                                         @if ($d->status == 'pending')
@@ -67,14 +68,20 @@
                                     </td>
                                     <td>
                                         @if ($d->status == 'pending')
-                                        <a href="/dashboard/report/hapus/{{ $d->id }}" class="btn btn-md btn-danger">
+                                        <a href="/dashboard/report/tanggapi/{{ $d->id }}" title="Beri Tanggapan" class="btn btn-sm btn-info">
+                                            <i class="fas fa-comment"></i>
+                                        </a>
+                                        <a href="/dashboard/report/hapus/{{ $d->id }}" class="btn btn-sm btn-danger">
                                             <i class="fas fa-trash"></i>
                                         </a>
+                                        @endif
+                                        @if($d->status == 'acc' )
+
                                         @endif
                                     </td>
                                 </tr>
                                 @empty
-                                <td colspan="9"></td>
+                                <td colspan="9">Data Tidak ada!</td>
                                 @endforelse
 
                         </table>

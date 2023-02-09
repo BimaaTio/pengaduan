@@ -43,15 +43,26 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+
+                                    @php
+                                    $no = 1;
+                                    @endphp
+                                    @forelse($dataMasyarakat as $dm)
                                     <tr>
-                                        <td>1</td>
-                                        <td>Bima</td>
-                                        <td>Win 95+</td>
-                                        <td> 4</td>
-                                        <td>X</td>
-                                        <td>X</td>
-                                        <td>X</td>
+                                        <td>{{ $no++ }}</td>
+                                        <td>{{ $dm->nik }}</td>
+                                        <td>{{ $dm->name }}</td>
+                                        <td>{{ $dm->username }}</td>
+                                        <td>{{ $dm->email }}</td>
+                                        <td>{{ $dm->created_at->format('d M Y') }}</td>
+                                        <td>
+                                            <a href="" class="btn btn-sm btn-warning"><i class="fas fa-edit"></i></a>
+                                            <a href="" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
+                                        </td>
                                     </tr>
+                                    @empty
+                                    <td colspan="9">DATA TIDAK ADA</td>
+                                    @endforelse
                             </table>
                         </div>
                     </div>

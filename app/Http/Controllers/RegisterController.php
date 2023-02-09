@@ -23,12 +23,14 @@ class RegisterController extends Controller
         $validateData = $request->validate([
             'name' => ' required|max:255',
             'username' => ['required','min:3','max:255','unique:users'],
+            'telp' => 'required|max:20',
+            'nik' => 'required|max:20',
             'email' => 'required|email:dns|unique:users',
             'password' => 'required|min:3|max:255'
             ]);
         $validateData['password'] = Hash::make($validateData['password']);
         User::create($validateData);
-        return redirect('login')->with('sukses', 'Berhasil Membuat Akun!');
+        return redirect('/login')->with('sukses', 'Berhasil Membuat Akun!');
     }
     public function masyarakat(Request $request)
     {
@@ -42,6 +44,6 @@ class RegisterController extends Controller
         ]);
         $data['password'] = Hash::make($data['password']);
         People::Create($data);
-        return redirect('/dashboard/masyarakat')->with('sukses', 'Gagal Membuat Akun!');
+        return redirect('/dashboard/masyarakat')->with('sukses', 'Berhasil Membuat Akun!');
     }
 }

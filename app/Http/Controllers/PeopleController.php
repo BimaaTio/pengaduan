@@ -26,14 +26,5 @@ class PeopleController extends Controller
             'title' => 'SIADU &mdash; Buat Akun'
         ]);
     }
-    public function insertMasyarakat(Request $request)
-    {
-        if ($data = People::create()) {
-            return
-                redirect('/dashboard/masyarakat')->with('sukses', 'Berhasil Membuat Akun!');
-        } else {
-            return
-                redirect('/dashboard/masyarakat')->with('gagal', 'Gagal Membuat Akun!');
-        }
-    }
+    
 }
