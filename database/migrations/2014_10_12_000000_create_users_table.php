@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->bigInteger('nik')->unique();
-            $table->enum('role', ['a', 'p', 'm'])->default('m');
+            $table->enum('role', ['a', 'p', 'm']);
             $table->string('username');
             $table->string('email')->unique();
             $table->bigInteger('telp')->unique();

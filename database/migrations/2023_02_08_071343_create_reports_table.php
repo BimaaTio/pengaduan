@@ -20,7 +20,7 @@ class CreateReportsTable extends Migration
             $table->text('body');
             $table->string('foto');
             $table->enum('status', ['acc', 'pending'])->default('pending');
-            $table->timestamp('published_at')->nullable();
+            $table->timestamp('published_at');
             $table->timestamps();
         });
     }

@@ -27,7 +27,7 @@ Route::get('/', function () {
         'title' => 'SIADU &mdash; Home',
         'logo' => 'siadu'
     ]);
-});
+})->name('home');
 
 // Route Login
 Route::get('/login', [LoginController::class, 'index'])->middleware('guest')->name('login');
@@ -38,28 +38,31 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->midd
 
 // Route Register
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest')->name('register');
-Route::post('/register', [RegisterController::class, 'prosesRegister'])->name('prosesRegister');
+Route::post('/registerMas', [RegisterController::class, 'masyarakat']);
+Route::post('/registerPet', [RegisterController::class, 'petugas']);
+Route::post('/register', [RegisterController::class, 'prosesRegister']);
 
 // Route Dashboard
-Route::get('/dashboard', function () {
-    $dataUser  = User::all();
-    return view('dashboard.index', [
-        'title' => 'SIADU &mdash; Dashboard'
-    ]);
-})->middleware('auth')->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
 
 // Route data laporan
-Route::get('/dashboard/report', [ReportController::class, 'index'])->name('reports');
-Route::get('/dashboard/buat-laporan', [ReportController::class, 'tambahLaporan'])->name('tambahLaporan');
-Route::post('/insertReport', [ReportController::class, 'insertReport'])->name('insertReport');
-Route::get('/dashboard/report/hapus/{id:id}', [ReportController::class, 'hapusLaporan'])->name('hapusLaporan');
+Route::get('/dashboard/report', [DashboardController::class, 'indexReport'])->name('reports');
+Route::get('/dashboard/buat-laporan', [DashboardController::class, 'tambahLaporan']);
+Route::post('/insertReport', [DashboardController::class, 'insertReport']);
+Route::get('/dashboard/report/hapus/{id:id}', [DashboardController::class, 'hapusLaporan']);
 
-// Route tanggapi laporan
-Route::get('/dashboard/report/tanggapi/{id:id}', [CommentController::class, 'index'])->name('tanggapan');
-Route::post('/insertTanggapan', [CommentController::class, 'tanggapi'])->name('tanggapi');
 
+// Route tanggapan laporan
+Route::get('/dashboard/report/tanggapi/{id:id}', [DashboardController::class, 'indexComment'])->name('tanggapan');
+Route::post('/insertTanggapan', [DashboardController::class, 'tanggapi'])->name('tanggapi');
+Route::get('/dashboard/tanggapan/hapus/{id:id}', [DashboardController::class, 'hapusComment']);
 
 // Route kelola masyarakat
-Route::get('/dashboard/masyarakat', [UserController::class, 'masyarakat'])->name('masyrakat');
-// Register Masyarakat
-Route::get('/dashboard/buat-akun-masyarakat', [UserController::class, 'buatAkunMasyarakat'])->name('buatAkunMasyarakat');
+Route::get('/dashboard/masyarakat', [DashboardController::class, 'masyarakat'])->name('masyarakat');
+Route::get('/dashboard/buat-akun-masyarakat', [DashboardController::class, 'buatAkunMasyarakat']);
+Route::get('/dashboard/masyarakat/hapus/{nik:nik}', [DashboardController::class, 'hapusMas']);
+
+// Route Kelola Petugas
+Route::get('/dashboard/petugas', [DashboardController::class, 'petugas'])->name('petugas');
+Route::get('/dashboard/buat-akun-petugas', [DashboardController::class, 'buatAkunPetugas']);
+Route::get('/dashboard/petugas/hapus/{nik:nik}', [DashboardController::class, 'hapusPet']);

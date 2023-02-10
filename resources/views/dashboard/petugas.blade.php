@@ -5,13 +5,13 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Kelola Akun Masyarakat</h1>
+                    <h1 class="m-0">Kelola Akun Petugas</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="/">Home</a></li>
                         <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Masyarakat</li>
+                        <li class="breadcrumb-item active">Petugas</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -21,20 +21,20 @@
     <div class="content">
         <div class="container-fluid">
             <div class="row">
-                @if ($msg = Session::get('sukses'))
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <strong>Sip!</strong> {{ $msg }}
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                @endif
                 <div class="col">
+                    @if ($msg = Session::get('sukses'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong>Sip!</strong> {{ $msg }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @endif
                     <div class="card">
                         <div class="card-header">
-                            <h3>Data Akun Masyarakat</h3>
-                            <a href="/dashboard/buat-akun-masyarakat" class="my-2 btn btn-sm btn-primary">Tambah Akun
-                                Masyarakat</a>
+                            <h3>Data Akun Petugas</h3>
+                            <a href="/dashboard/buat-akun-petugas" class="my-2 btn btn-sm btn-primary">Tambah Akun
+                                Petugas</a>
                         </div>
                         <div class="card-body">
                             <div class="card-body">
@@ -53,18 +53,18 @@
                                     <tbody>
 
                                         @php
-                                            $no = 1;
+                                            $p = 1;
                                         @endphp
-                                        @forelse($dataMasyarakat as $dm)
+                                        @forelse($dataPetugas as $dp)
                                             <tr>
-                                                <td>{{ $no++ }}</td>
-                                                <td>{{ $dm->nik }}</td>
-                                                <td>{{ $dm->name }}</td>
-                                                <td>{{ $dm->username }}</td>
-                                                <td>{{ $dm->email }}</td>
-                                                <td>{{ $dm->created_at->format('d M Y') }}</td>
+                                                <td>{{ $p++ }}</td>
+                                                <td>{{ $dp->nik }}</td>
+                                                <td>{{ $dp->name }}</td>
+                                                <td>{{ $dp->username }}</td>
+                                                <td>{{ $dp->email }}</td>
+                                                <td>{{ $dp->created_at->format('d M Y') }}</td>
                                                 <td>
-                                                    <a href="/dashboard/masyarakat/hapus/{{ $dm->nik }}"
+                                                    <a href="/dashboard/petugas/hapus/{{ $dp->nik }}"
                                                         class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
                                                 </td>
                                             </tr>

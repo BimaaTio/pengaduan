@@ -4,14 +4,14 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Buat Akun Masyarakat</h1>
+                    <h1 class="m-0">Buat Akun Petugas</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="/">Home</a></li>
                         <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
-                        <li class="breadcrumb-item"><a href="/dashboard/masyarakat">Masyarakat</a></li>
-                        <li class="breadcrumb-item active">Buat Akun Masyarakat</li>
+                        <li class="breadcrumb-item"><a href="/dashboard/petugas">Petugas</a></li>
+                        <li class="breadcrumb-item active">Buat Akun Petugas</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -24,9 +24,8 @@
                     <div class="card">
                         <div class="card-header">Buat Akun</div>
                         <div class="card-body">
-                            <form action="/registerMas" method="POST">
+                            <form action="/registerPet" method="POST">
                                 @csrf
-
                                 <div class="form-group">
                                     <label for="nama">NIK</label>
                                     <input id="nama" type="number" class="form-control" name="nik" maxlength="18">
@@ -61,7 +60,7 @@
                                 <div class="form-group">
                                     <label for="telp">Role</label>
                                     <select name="role" id="" class="form-control">
-                                        <option value="m" selected>Masyarakat</option>
+                                        <option value="p" selected>Petugas</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -73,16 +72,17 @@
                                         <div class="label"></div>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <button type="submit" name="regis" class="btn btn-primary btn-lg btn-block">
-                                        Register
-                                    </button>
-                                </div>
-                            </form>
                         </div>
+                        <div class="form-group">
+                            <button type="submit" name="regis" class="btn btn-primary btn-lg btn-block">
+                                Register
+                            </button>
+                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 @endsection
