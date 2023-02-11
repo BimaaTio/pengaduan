@@ -5,13 +5,13 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Kelola Akun Masyarakat</h1>
+                    <h1 class="m-0">Kelola Akun Admin</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="/">Home</a></li>
-                        <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Masyarakat</li>
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                        <li class="breadcrumb-item active">Admin</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -32,9 +32,9 @@
                     @endif
                     <div class="card">
                         <div class="card-header">
-                            <h3>Data Akun Masyarakat</h3>
+                            <h3>Data Akun Admin</h3>
                             <a href="/dashboard/buat-akun-masyarakat" class="my-2 btn btn-sm btn-primary">Tambah Akun
-                                Masyarakat</a>
+                                Admin</a>
                         </div>
                         <div class="card-body">
                             <div class="card-body">
@@ -55,16 +55,16 @@
                                         @php
                                             $no = 1;
                                         @endphp
-                                        @forelse($dataMasyarakat as $dm)
+                                        @forelse($dataAdmin as $da)
                                             <tr>
                                                 <td>{{ $no++ }}</td>
-                                                <td>{{ $dm->nik }}</td>
-                                                <td>{{ $dm->name }}</td>
-                                                <td>{{ $dm->username }}</td>
-                                                <td>{{ $dm->email }}</td>
-                                                <td>{{ $dm->created_at->format('d M Y') }}</td>
+                                                <td>{{ $da->nik }}</td>
+                                                <td>{{ $da->name }}</td>
+                                                <td>{{ $da->username }}</td>
+                                                <td>{{ $da->email }}</td>
+                                                <td>{{ $da->created_at->format('d M Y') }}</td>
                                                 <td>
-                                                    <a href="/dashboard/masyarakat/hapus/{{ $dm->nik }}"
+                                                    <a href="/dashboard/masyarakat/hapus/{{ $da->nik }}"
                                                         class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
                                                 </td>
                                             </tr>

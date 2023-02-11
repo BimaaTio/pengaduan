@@ -26,7 +26,7 @@
                         <form action="/insertTanggapan" method="post" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
-                                <input type="hidden" name="users_id" value="{{ $data->users->id }}" id="">
+                                <input type="hidden" name="users_id" value="{{ $dataUser->id }}" id="">
                                 <input type="hidden" name="reports_id" value="{{ $data->id }}" id="">
                                 <div class="form-group">
                                     <label for="inputName">Nama Pelapor : {{ $data->users->name }}</label>

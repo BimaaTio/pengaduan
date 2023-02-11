@@ -72,11 +72,11 @@
                                         <div class="label"></div>
                                     </div>
                                 </div>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" name="regis" class="btn btn-primary btn-lg btn-block">
-                                Register
-                            </button>
+                                <div class="form-group">
+                                    <button type="submit" name="regis" class="btn btn-primary btn-lg btn-block">
+                                        Register
+                                    </button>
+                                </div>
                         </div>
                         </form>
                     </div>

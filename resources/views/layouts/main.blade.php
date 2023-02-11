@@ -37,8 +37,7 @@
                     <!-- hidden spacer to center brand on mobile -->
                 </span>
                 <a class="navbar-brand" href="#">
-                    <img src="{{ asset('assets/img/logo.png') }}" alt="Bootstrap" width="58" height="54"
-                        class="me-2">
+                    <img src="{{ asset('assets/img/logo.png') }}" alt="Bootstrap" width="58" height="54" class="me-2">
                     SIADU </a>
                 <div class="w-100 text-right">
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#myNavbar7">
@@ -49,75 +48,39 @@
             <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar7">
                 <ul class="navbar-nav ms-auto flex-nowrap">
                     <li class="nav-item">
-                        <a href="/report" class="nav-link">Daftar Aduan</a>
+                        <a href="/daftar-laporan" class="nav-link">Daftar Aduan</a>
                     </li>
+                    @auth
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-person-fill"></i>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Dashboard</a></li>
+                            <form action="/logout" method="post">
+                                @csrf
+                                <li>
+                                    <button class="dropdown-item">Logout</button>
+                                </li>
+                            </form>
+                        </ul>
+                    </li>
+                    @else
                     <li class="nav-item">
                         <a href="/login" class="nav-link">Login</a>
                     </li>
-                    <form action="/logout" method="post">
-                        @csrf
-                        <li class="nav-item">
-                            <button class="nav-link btn btn-primary">Logout</button>
-                        </li>
-                    </form>
+                    @endauth
                 </ul>
             </div>
         </div>
     </nav>
     <!-- /Navbar -->
-    <!-- Heroes -->
-    <div class="container col-xxl-8 ">
-        <div class="row align-items-center g-5 py-5">
-            <div class="col-lg-6" data-aos="fade-right">
-                <h1 class="display-5 fw-bold lh-1 mb-3 ">SIADU</h1>
-                <p class="lead  my-4">
-                    Suara Anda adalah Perubahan!
-                </p>
-                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                    <a href="login.php?info=Silahkan Login dulu untuk melaporkan"
-                        class="btn btn-primary btn-lg px-4 me-md-2">Lapor
-                        Sekarang</a>
-                </div>
-            </div>
-            <div class="col-lg-6" data-aos="fade-left">
-                <img src="{{ asset('assets/img/heroes.svg') }}" alt="" srcset="">
-            </div>
-        </div>
-    </div>
-    <!-- /Heroes -->
+    @yield('heroes')
     <div class="container">
-        <hr class="hr-text">
-        <hr>
+        @yield('konten')
     </div>
-    <br>
-    <!-- Deskripsi -->
-    <section class="container mt-5" data-aos="fade-up-right">
-        <h2 class="fw-bold">Apa itu SIADU ?</h2>
-        <div class="row" data-aos="fade-right">
-            <div class="col-md-7">
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id eum sapiente quaerat dolorem eligendi
-                    molestias minima reiciendis aliquid earum vel beatae excepturi, nisi nesciunt unde vero facilis
-                    expedita?.
-                </p>
-            </div>
-        </div>
-    </section>
-    <!-- End desk -->
-    <section class="container mt-5" data-aos="fade-up">
-        <div class="row flex-lg-row-reverse">
-            <div class="col-lg-6">
-                <h2 class="fw-bold mb-4" data-aos="fade-left">Bagaimana Cara Lapor ?</h2>
-                <h6 data-aos="fade-left" class="mb-2">Cara Melaporkan Masalah sebagai Berikut :</h6>
-                <ul class="list-unstyled">
-                    <li>1. Silahkan Buat Akun Terlebih dahulu</li>
-                    <li>2. Setelah Buat Akun,silakan login</li>
-                    <li>3. Setelah Login anda akan masuk ke halaman dashboard</li>
-                    <li>4. Dan silakan anda mengisi form yang tersedia</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+    
     <!-- Footer -->
     <div class="container">
         <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
@@ -128,10 +91,10 @@
             </div>
 
             <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-                <li class="ms-3"><a class="text-muted" href="https://instagram.com/bimatio_"><i
-                            class="bi bi-instagram" width="24" height="24"></i></a></li>
-                <li class="ms-3"><a class="text-muted" href="https://wa.me/6288802791267"><i
-                            class="bi bi-whatsapp" width="24" height="24"></i></a></li>
+                <li class="ms-3"><a class="text-muted" href="https://instagram.com/bimatio_"><i class="bi bi-instagram"
+                            width="24" height="24"></i></a></li>
+                <li class="ms-3"><a class="text-muted" href="https://wa.me/6288802791267"><i class="bi bi-whatsapp"
+                            width="24" height="24"></i></a></li>
                 <li class="ms-3"><a class="text-muted" href="#"><i class="bi bi-linkedin" width="24"
                             height="24"></i></a></li>
             </ul>

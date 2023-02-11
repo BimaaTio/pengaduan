@@ -6,7 +6,6 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1 class="m-0">Laporan</h1>
-                    <a href="/dashboard/buat-laporan" class="btn btn-primary">Buat Laporan</a>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">

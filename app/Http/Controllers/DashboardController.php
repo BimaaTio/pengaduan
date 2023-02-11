@@ -16,8 +16,8 @@ class DashboardController extends Controller
         // Data user yang sedang login
         $data = Auth::user();
         $dataUser = User::all();
-        $dataLap = Report::all();
-        $dataComment = Comment::all();
+        $dataLap = collect(Report::with('users')->get());
+        $dataComment = collect(Comment::with('reports')->get());
         return view('dashboard.index', [
             'title' => 'SIADU &mdash; Dashboard',
             'dataUser' => $data,
@@ -29,9 +29,9 @@ class DashboardController extends Controller
 
     public function indexReport()
     {
-        $dataLap = Report::all();
+        $dataLap = collect(Report::with('users')->get());
         $dataUser = Auth::user();
-        $dataComment = Comment::all();
+        $dataComment = collect(Comment::with(['reports','users'])->get());
         return view('dashboard.reports', [
             'title' => 'SIADU &mdash; Laporan',
             'dataLap' => $dataLap,
@@ -61,7 +61,7 @@ class DashboardController extends Controller
     public function masyarakat()
     {
         $dataUser = Auth::user();
-        $dataMasyarakat = User::all()->where('role', 'm');
+        $dataMasyarakat = User::get()->where('role', 'm');
         return view('dashboard.masyarakat', [
             'title' => 'SIADU &mdash; Masyarakat',
             'dataMasyarakat' => $dataMasyarakat,
@@ -70,7 +70,7 @@ class DashboardController extends Controller
     }
     public function petugas()
     {
-        $dataPetugas = User::all()->where('role', 'p');
+        $dataPetugas = User::get()->where('role', 'p');
         $dataUser = Auth::user();
         return view('dashboard.petugas', [
             'title' => 'SIADU &mdash; Petugas',
@@ -78,8 +78,24 @@ class DashboardController extends Controller
             'dataUser' => $dataUser
         ]);
     }
-
-    // Method create
+    public function admin()
+    {
+        $dataAdmin = User::get()->where('role', 'a');
+        $dataUser = Auth::user();
+        return view('dashboard.admin', [
+            'title' => 'SIADU &mdash; Admin',
+            'dataAdmin' => $dataAdmin,
+            'dataUser' => $dataUser
+        ]);
+    }
+    public function buatAkunAdmin()
+    {
+        $dataUser = Auth::user();
+        return view('dashboard.addPetugas', [
+            'title' => 'SIADU &mdash; Buat Akun',
+            'dataUser' => $dataUser
+        ]);
+    }
     public function buatAkunMasyarakat()
     {
         $dataUser = Auth::user();
@@ -96,6 +112,7 @@ class DashboardController extends Controller
             'dataUser' => $dataUser
         ]);
     }
+    // Method create
     public function insertReport(Request $request)
     {
         if ($data = Report::create($request->all())) {
@@ -119,7 +136,6 @@ class DashboardController extends Controller
             return redirect('/dashboard/report')->with('gagal', 'Gagal Menanggapi Laporan!');
         }
     }
-
     // Method Hapus
     public function hapusLaporan(Report $id)
     {
@@ -127,7 +143,7 @@ class DashboardController extends Controller
         if ($data->delete()) {
             return redirect('/dashboard/report')->with('sukses', 'Berhasil Menghapus Laporan!');
         } else {
-            return redirect('/dashboard/report')->with('gagal', 'Berhasil Menghapus Laporan!');
+            return redirect('/dashboard/report')->with('gagal', 'Gagal Menghapus Laporan!');
         }
     }
     public function hapusComment(Comment $id)
@@ -136,9 +152,9 @@ class DashboardController extends Controller
         $dataReport = Report::find($data->reports_id);
         if ($data->delete()) {
             $dataReport->update(['status' => 'pending']);
-            return redirect('/dashboard/report')->with('sukses', 'Berhasil Menghapus Laporan!');
+            return redirect('/dashboard/report')->with('sukses', 'Berhasil Menghapus Tanggapan!');
         } else {
-            return redirect('/dashboard/report')->with('gagal', 'Berhasil Menghapus Tanggapan!');
+            return redirect('/dashboard/report')->with('gagal', 'Gagal Menghapus Tanggapan!');
         }
     }
     public function hapusMas(User $nik)
@@ -155,6 +171,15 @@ class DashboardController extends Controller
         $data = $nik;
         if ($data->delete()) {
             return redirect('/dashboard/petugas')->with('sukses', 'Berhasil Menghapus Akun!');
+        } else {
+            dump($data);
+        }
+    }
+    public function hapusAdm(User $nik)
+    {
+        $data = $nik;
+        if ($data->delete()) {
+            return redirect('/dashboard/admin')->with('sukses', 'Berhasil Menghapus Akun!');
         } else {
             dump($data);
         }
