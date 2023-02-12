@@ -48,7 +48,10 @@
             <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar7">
                 <ul class="navbar-nav ms-auto flex-nowrap">
                     <li class="nav-item">
-                        <a href="/daftar-laporan" class="nav-link">Daftar Aduan</a>
+                        <a href="/" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/daftar-laporan" class="nav-link">Daftar Laporan</a>
                     </li>
                     @auth
                     <li class="nav-item dropdown">

@@ -1,18 +1,28 @@
 # SIADU 
 
-### Tech Stack & Admin Template
+**Ujikom RPL 2023 Paket 2**
+
+Nama : Bima Tio Rachman
+No uji : 12-210-184
+Kelas : XII RPL
+
+
+### Teknologi & Framework Untuk Membuat Website
 - Laravel 8
 - JS
 - AdminLTE
+- Bootstrap 5
 
-#### JS Plugin 
-- Banyak
+#### Plugin 
+- jQuery
+- Datatables
+- Summernote
+- FontAwesome
+- Dll
 
 
 
-
-=====================================================================================================
-
+========================================================================
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 

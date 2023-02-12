@@ -121,9 +121,9 @@ class DashboardController extends Controller
                 $data->foto = $request->file('foto')->getClientOriginalName();
                 $data->save();
             }
-            return redirect('/dashboard/report')->with('sukses', 'Berhasil Membuat Laporan!');
+            return redirect('/dashboard/buat-laporan')->with('sukses', 'Berhasil Membuat Laporan!');
         } else {
-            return redirect('/dashboard/report')->with('gagal', 'Gagal Membuat Laporan!');
+            return redirect('/dashboard/buar-laporan')->with('gagal', 'Gagal Membuat Laporan!');
         }
     }
     public function tanggapi(Request $request)

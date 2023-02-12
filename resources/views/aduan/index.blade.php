@@ -106,10 +106,12 @@
 </style>
 <h1 class="text-center my-3">Daftar Laporan yang sudah di tanggapi</h1>
 <hr class="my-3">
+
 <section class="wrapper">
     <div class="container-fostrap">
         <div class="content">
             <div class="container">
+
                 <div class="row">
                     @forelse($data as $d)
                     <div class="col-xs-12 col-sm-4">
@@ -129,8 +131,7 @@
                                 <small class="text-right text-muted">{{  $d->created_at->diffForHumans() }}</small>
                             </div>
                             <div class="card-read-more">
-                                <a href="/report/show/{{ $d->id }}"
-                                    class="btn btn-link btn-block">
+                                <a href="/daftar-laporan/show/{{ $d->id }}" class="btn btn-link btn-block">
                                     Lihat Tanggapan
                                 </a>
                             </div>
@@ -141,6 +142,7 @@
                     @endforelse
 
                 </div>
+                {{ $data->links() }}
             </div>
         </div>
     </div>

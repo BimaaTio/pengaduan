@@ -25,6 +25,7 @@
         <!-- /.login-logo -->
         <div class="card">
             <div class="card-body login-card-body">
+                <div class="login-box-msg">Silahkan Login Untuk Melaporkan</div>
                 @if($msg = Session::get('sukses'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     <strong>Sip!</strong> {{ $msg }}
@@ -44,7 +45,8 @@
                 <form action="/login" method="post">
                     @csrf
                     <div class="input-group mb-3">
-                        <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" required placeholder="Email">
+                        <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
+                            required placeholder="Email">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
@@ -52,12 +54,13 @@
                         </div>
                         @error('email')
                         <div class="invalid-feedback">
-                          {{ $message }}
+                            {{ $message }}
                         </div>
                         @enderror
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" required placeholder="Password">
+                        <input type="password" class="form-control @error('password') is-invalid @enderror"
+                            name="password" required placeholder="Password">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -65,7 +68,7 @@
                         </div>
                         @error('password')
                         <div class="invalid-feedback">
-                          {{ $message }}
+                            {{ $message }}
                         </div>
                         @enderror
                     </div>
@@ -86,7 +89,7 @@
                     </div>
                 </form>
                 <p class="mb-0">
-                    <a href="/register" class="text-center">Buat Akun Baru</a>
+                    Tidak Punya Akun?<a href="/register" class="text-center"> <u>buat disini</u></a>
                 </p>
             </div>
             <!-- /.login-card-body -->

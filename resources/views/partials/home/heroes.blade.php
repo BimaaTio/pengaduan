@@ -7,7 +7,7 @@
                     Suara Anda adalah Perubahan!
                 </p>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                    <a href="login.php?info=Silahkan Login dulu untuk melaporkan"
+                    <a href="{{ route('login') }}"
                         class="btn btn-primary btn-lg px-4 me-md-2">Lapor
                         Sekarang</a>
                 </div>
