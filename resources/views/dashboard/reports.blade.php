@@ -80,7 +80,7 @@
                                                         title="Beri Tanggapan" class="btn btn-sm btn-info">
                                                         <i class="fas fa-comment"></i>
                                                     </a>
-                                                    <a href="/dashboard/report/hapus/{{ $d->id }}"
+                                                    <a onclick="return confirm('Yakin Di Hapus?')"href="/dashboard/report/hapus/{{ $d->id }}"
                                                         class="btn btn-sm btn-danger">
                                                         <i class="fas fa-trash"></i>
                                                     </a>
@@ -132,7 +132,8 @@
                                             <td>{!! $dc->body !!}</td>
                                             <td>{{ $dc->created_at->diffForHumans() }}</td>
                                             <td>
-                                                <a href="/dashboard/tanggapan/hapus/{{ $dc->id }}"
+                                                <a onclick="return confirm('Yakin Di Hapus?')"
+                                                    href="/dashboard/tanggapan/hapus/{{ $dc->id }}"
                                                     class="btn btn-sm btn-danger">
                                                     <i class="fas fa-trash"></i>
                                                 </a>

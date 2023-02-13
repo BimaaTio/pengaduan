@@ -31,7 +31,7 @@ class DashboardController extends Controller
     {
         $dataLap = collect(Report::with('users')->get());
         $dataUser = Auth::user();
-        $dataComment = collect(Comment::with(['reports','users'])->get());
+        $dataComment = collect(Comment::with(['reports', 'users'])->get());
         return view('dashboard.reports', [
             'title' => 'SIADU &mdash; Laporan',
             'dataLap' => $dataLap,
@@ -121,7 +121,7 @@ class DashboardController extends Controller
                 $data->foto = $request->file('foto')->getClientOriginalName();
                 $data->save();
             }
-            return redirect('/dashboard/buat-laporan')->with('sukses', 'Berhasil Membuat Laporan!');
+            return redirect('/dashboard/buat-laporan')->with('sukses', 'Berhasil Membuat Laporan, Silakan Tunggu Sampai Laporan Ditanggapi! ');
         } else {
             return redirect('/dashboard/buar-laporan')->with('gagal', 'Gagal Membuat Laporan!');
         }

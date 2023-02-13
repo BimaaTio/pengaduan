@@ -15,13 +15,16 @@
  <script src="{{ asset('template/plugins/jqvmap/maps/jquery.vmap.usa.js') }}"></script>
  <!-- daterangepicker -->
  <script src="{{ asset('template/plugins/daterangepicker/daterangepicker.js') }}"></script>
-<!-- Summernote -->
+ <!-- Summernote -->
  <script src="{{ asset('template/plugins/summernote/summernote-bs4.min.js') }}"></script>
  <!-- overlayScrollbars -->
  <script src="{{ asset('template/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
  <!-- AdminLTE App -->
  <script src="{{ asset('template/dist/js/adminlte.js') }}"></script>
  <script src="{{ asset('template/dist/js/pages/dashboard.js') }}"></script>
+ <!-- JS Libraies -->
+ {{-- <script src="{{ asset('template/plugins/sweetalert/sweetalert2.min.js') }}"></script> --}}
+ <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
  <!-- DataTables  & Plugins -->
  <script src="{{ asset('template/plugins/datatables/jquery.dataTables.min.js') }}"></script>
  <script src="{{ asset('template/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
@@ -57,5 +60,24 @@
              "buttons": ["excel", "pdf", "print", "colvis"]
          }).buttons().container().appendTo('#example3_wrapper .col-md-6:eq(0)');
          $('#summernote').summernote()
+         $("#hapus").click(function() {
+             Swal.fire({
+                 title: 'Are you sure?',
+                 text: "You won't be able to revert this!",
+                 icon: 'warning',
+                 showCancelButton: true,
+                 confirmButtonColor: '#3085d6',
+                 cancelButtonColor: '#d33',
+                 confirmButtonText: 'Yes, delete it!'
+             }).then((result) => {
+                 if (result.isConfirmed) {
+                     Swal.fire(
+                         'Deleted!',
+                         'Your file has been deleted.',
+                         'success'
+                     )
+                 }
+             })
+         });
      });
  </script>
