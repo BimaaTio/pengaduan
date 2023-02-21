@@ -22,7 +22,8 @@ Route::get('/', function () {
     return view('index', [
         'title' => 'SIADU &mdash; Home',
         'logo' => 'siadu'
-    ]);})->name('home');
+    ]);
+})->name('home');
 
 // Route Daftar Aduan
 Route::get('/daftar-laporan', [ReportController::class, 'index'])->name('daftarAduan');

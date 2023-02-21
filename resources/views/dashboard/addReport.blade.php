@@ -23,12 +23,12 @@
             <div class="row">
                 <div class="col">
                     @if ($msg = Session::get('sukses'))
-                    <div class="alert alert-success alert-dismissible fade show" role="alert">
-                        <strong>Sip!</strong> {{ $msg }}
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <strong>Sip!</strong> {{ $msg }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
                     @endif
                     <div class="card">
                         <form action="/insertReport" method="post" enctype="multipart/form-data">
